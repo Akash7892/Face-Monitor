@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Monitoring System</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://image.lexica.art/full_webp/e42e1c49-6600-41ff-8f13-0b0d63f5d2f8" type="image/x-icon"> 
+    <style>
+        body {
+            text-align: center;
+            background-image: url('https://image.lexica.art/full_webp/26f47401-0b6e-4b3b-bc15-1b27f4ec8024');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            color: white;
+        }
+        .heading-box {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid white;
+        }
+        .btn-start, .btn-stop {
+            margin: 20px;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .video-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center align the image */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading-box">
+            <h1 style="font-size: 90px;">Face Monitoring System</h1>
+        </div>
+        <div class="btn-start">
+            <button class="btn btn-primary" onclick="startModel()">Click Here to Start the Model</button>
+        </div>
+        <div class="btn-stop">
+            <form action="{{ url_for('stop_capture') }}" method="GET">
+                <button type="submit" class="btn btn-danger">View Result</button>
+            </form>
+        </div>
+        <div class="video-container">
+            <img id="video" src="">
+        </div>
+    </div>
+    <script>
+        function startModel() {
+            document.getElementById('video').src = "{{ url_for('video_feed') }}";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Language Detection Result</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://image.lexica.art/full_webp/e42e1c49-6600-41ff-8f13-0b0d63f5d2f8" type="image/x-icon">
+    <style>
+        body {
+            text-align: center;
+            background-image: url('https://image.lexica.art/full_webp/5ef957b2-d319-46aa-a5ac-ee577fa99a9e');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            color: rgb(0, 0, 0);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+        .transparent-box {
+            background-color: rgba(0, 0, 0, 0.351); /* White background with transparency */
+            padding: 20px;
+            border-radius: 15px;
+            max-width: 80%;
+            text-align: center;
+            color: rgb(255, 254, 254); /* Change text color inside the box to black for better readability */
+            border: 2px solid white;
+        }
+        .title {
+            font-size: 75px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .status {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .probabilities {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+        .btn-home {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="transparent-box">
+            <h1 class="title">Face Monitoring Result</h1>
+            <div class="status">
+                <p>Status: {{ status }}</p>
+            </div>
+            <div class="probabilities">
+                <p>Probability: {{ probability }}%</p>
+            </div>
+        </div>
+        <a href="/" class="btn-home">Back to Home</a>
+    </div>
+</body>
+</html>
