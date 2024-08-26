@@ -19,7 +19,7 @@ def result():
 
 # Initialize global variables
 cap = None
-last_status = ""
+last_status = "Kindly Start the Model"
 last_probability = 0
 
 mp_holistic = mp.solutions.holistic
@@ -83,8 +83,8 @@ def generate_frames():
                 row = pose_row + face_row
 
                 X = pd.DataFrame([row])
-                scaler = StandardScaler()
-                X = scaler.fit_transform(X)
+                scaler = StandardScaler(with_mean=True, with_std=True)
+                scaler.fit(X)
                 body_language_class = model.predict(X)[0]
                 body_language_prob = model.predict_proba(X)[0]
 
@@ -93,7 +93,7 @@ def generate_frames():
 
                 last_status = body_language_class
                 last_probability = prob_percentage
-
+               
                 draw_fancy_progress_bar(image, progress, position=(50, 90), size=(300, 40))
 
                 cv2.putText(image, f'STATUS: {body_language_class.split(" ")[0]}', (50, 80),
@@ -126,4 +126,4 @@ def stop_capture():
     return redirect(url_for('result'))
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True)
